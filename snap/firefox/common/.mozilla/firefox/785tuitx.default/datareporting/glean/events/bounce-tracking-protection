@@ -1,0 +1,1 @@
+{"timestamp":7419320,"category":"bounce.tracking.protection","name":"purge_action","extra":{"require_stateful_bounces":"false","is_dry_run":"true","site_host":"canvaslms.com","success":"true","bounce_time":"1773006184","glean_timestamp":"1773013330652"},"execution_counter":1}
