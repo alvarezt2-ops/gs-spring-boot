@@ -3,15 +3,31 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            steps { checkout scm }
+            steps {
+                // Pull code from GitHub
+                checkout scm
+            }
         }
 
         stage('Build') {
-            steps { sh './mvnw clean package' }
+            steps {
+                // Build the Spring Boot fat JAR
+                sh './mvnw clean package'
+            }
         }
 
         stage('Archive') {
-            steps { archiveArtifacts artifacts: 'target/*.jar', fingerprint: true }
+            steps {
+                // Archive the built JAR
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            }
+        }
+    }
+
+    post {
+        always {
+            // Optional: show console output if needed
+            echo 'Pipeline completed'
         }
     }
 }
