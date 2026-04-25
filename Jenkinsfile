@@ -22,7 +22,15 @@ pipeline {
                 archiveArtifacts artifacts: 'complete/target/*.jar', fingerprint: true
             }
         }
-    }
+
+        stage('Deploy to Nexus') {
+            steps {
+                dir('complete') {
+                    sh 'mvn deploy -DskipTests'
+                }
+            }
+        }
+}
 
     post {
         always {
